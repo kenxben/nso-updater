@@ -1,13 +1,14 @@
 
-creds_file = "keys/verifynso-dd9a44c0a761.json"
+GSHEET_CREDS = "keys/verifynso-dd9a44c0a761.json"
+EMAIL_CREDS = "keys/email_creds.yaml"
 
 # test
 # targetID = "14L_TE8SluitJBsnNCJCvZHeSH2jh_-9_W8tIIUPV6sk"
 
 # real target
-targetID = "1fM4UC4Y9uxkzJxIKFnW0h_YVAlB5qQ2cQdl4VuxmnnA"
+TARGET_ID = "1fM4UC4Y9uxkzJxIKFnW0h_YVAlB5qQ2cQdl4VuxmnnA"
 
-urls = [
+URLS = [
     "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7458&force=1",
     "http://permisosfuncionamiento.controlsanitario.gob.ec/consulta/reporte2excel_new.php",
 
@@ -20,15 +21,15 @@ urls = [
 
 ]
 
-# To guarantee
-col_renamer = {
+# Rules to rename variables to be the same
+COL_RENAMER = {
     "No. de Registro Sanitario": "Codigo de identificacion de NSO",
     "Fecha de Emisión": "Fecha de emisión del certificado",
     "Fecha de Vigencia": "Fecha de vigencia de  NSO",
     "Titular del Producto": "Titular del producto",
     "Nombre del Producto": "Nombre del producto",
     "Marca del producto": "Marca del producto",
-    "MARCA" : "Marca del producto",
+    "MARCA": "Marca del producto",
     "PRODUCTO": "Nombre del producto",
     "SOLICITANTE": "Titular del producto",
     "R. SANITARIO": "Codigo de identificacion de NSO",
@@ -38,7 +39,7 @@ col_renamer = {
 }
 
 # Columns must be sorted in this order to be read by api engine
-cols_sorted = [
+COLS_SORTED = [
     "Codigo de identificacion de NSO",
     "Nombre del producto",
     "Marca del producto",
