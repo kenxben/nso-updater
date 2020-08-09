@@ -1,0 +1,1 @@
+job: python nso2gsheet.py
