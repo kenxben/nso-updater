@@ -6,6 +6,8 @@ import gspread
 import settings
 from sender import send_email
 import sys
+import os
+import json
 
 
 def send_report(message, error=None):
@@ -56,7 +58,12 @@ def format_data(raw):
 def upload_data(data, targetID):
     # set up credentials
     scope = ['https://www.googleapis.com/auth/spreadsheets']
-    credentials = Credentials.from_service_account_file(settings.GSHEET_CREDS, scopes=scope)
+
+    if os.path.isfile(settings.GSHEET_CREDS):  # for local environment
+        credentials = Credentials.from_service_account_file(settings.GSHEET_CREDS, scopes=scope)
+    else:  # to use secret stored in environment vars
+        gc = json.loads(os.getenv("GSHEET_CREDS"))
+        credentials = Credentials.from_service_account_info(gc, scopes=scope)
     gc = gspread.authorize(credentials)
 
     # Open google sheets document
