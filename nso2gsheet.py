@@ -12,16 +12,19 @@ import json
 
 def send_report(message, error=None):
     print(message, "ERROR:", error)
-    recipients = "kenxben@gmail.com, samantaamaguayo@gmail.com"
-
+    recipients = ["kenxben@gmail.com", "samantaamaguayo@gmail.com"]
+    msg = "\n".join(["<body>",
+                     message,
+                     str(error).replace('"', ''),
+                     "</body>"]).replace("\n", "<br>")
     if error:
         send_email(recipients,
-                   "ERROR: Actualización de base de registros sanitarios",
-                   "\n".join([message, str(error), "No se actualizó la base."]))
+                   "ERROR: Actualizacion de base de registros sanitarios",
+                   msg)
     else:
         send_email(recipients,
-                   "REPORTE: Actualización exitosa de base de registros sanitarios",
-                   message)
+                   "REPORTE: Actualizacion exitosa de base de registros sanitarios",
+                   msg)
 
     sys.exit()
 
@@ -86,12 +89,12 @@ def main():
         try:
             raw = get_rawdata(url)
         except Exception as e:
-            send_report(f"ERROR: Couldn't read excel file at url:\n\n{url}\n\n", e)
+            send_report(f"ERROR: Couldn't read excel file at url {url}", e)
 
         try:
             df = format_data(raw)
         except Exception as e:
-            send_report(f"ERROR: Couldn't format data from url:\n\n{url}\n\nColumns: {list(raw.columns)}\n\n", e)
+            send_report(f"ERROR: Couldn't format data from url {url}\nColumns: {list(raw.columns)}", e)
 
         data.append(df)
 
@@ -104,9 +107,9 @@ def main():
     try:
         upload_data(data, settings.TARGET_ID)
     except Exception as e:
-        send_report(f"ERROR: Couldn't upload data to:\n\n{settings.TARGET_ID}\n\n", e)
+        send_report(f"ERROR: Couldn't upload data to {settings.TARGET_ID}", e)
 
-    send_report("Updated data:\n\nhttps://docs.google.com/spreadsheets/d/{settings.TARGET_ID}\n")
+    send_report(f"Updated data:\nhttps://docs.google.com/spreadsheets/d/{settings.TARGET_ID}\n")
     print("Success!")
 
 
