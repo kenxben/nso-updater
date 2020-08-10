@@ -29,9 +29,9 @@ def build_payload(recipients, subject, message):
 
 
 def send_email(recipients, subject, message):
-    key = os.getenv('TRUSTIFY_API_KEY')
-    secret = os.getenv('TRUSTIFY_API_SECRET')
-    trustifi_url = os.getenv('TRUSIFY_URL')
+    key = os.getenv('TRUSTIFI_API_KEY')
+    secret = os.getenv('TRUSTIFI_API_SECRET')
+    trustifi_url = os.getenv('TRUSIFI_URL')
 
     # Override if creds are in yaml file
     if os.path.isfile(EMAIL_CREDS):
