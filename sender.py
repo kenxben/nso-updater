@@ -1,4 +1,4 @@
-import smtplib
+import smtplib, ssl
 import yaml
 import os
 from email.message import EmailMessage
@@ -28,11 +28,13 @@ def send_email(recipient, subject, message):
     msg['From'] = email
     msg['To'] = recipient
 
+    context = ssl.create_default_context()
+
     try:
         s = smtplib.SMTP(servername, port)
         s.ehlo()
-        s.starttls()
-        s.ehlo
+        s.starttls(context=context)
+        s.ehlo()
         s.login(username, password)
         s.send_message(msg)
         s.quit()
