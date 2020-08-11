@@ -58,6 +58,10 @@ def format_data(raw):
     return raw
 
 
+def add_constant_col(df, colname, value):
+    df[colname] = value
+
+
 def upload_data(data, targetID):
     # set up credentials
     scope = ['https://www.googleapis.com/auth/spreadsheets']
@@ -83,18 +87,22 @@ def upload_data(data, targetID):
 
 def main():
 
-    # Extract and join data
     data = []
-    for url in settings.URLS:
+    for item in settings.URLS:
+        # Extract data
         try:
-            raw = get_rawdata(url)
+            raw = get_rawdata(item['url'])
         except Exception as e:
-            send_report(f"ERROR: Couldn't read excel file at url {url}", e)
+            send_report(f"ERROR: Couldn't read excel file at url {item['url']}", e)
 
+        # Add columns with type label
+        add_constant_col(raw, "Tipo de producto", item['label'])
+
+        # Format data
         try:
             df = format_data(raw)
         except Exception as e:
-            send_report(f"ERROR: Couldn't format data from url {url}\nColumns: {list(raw.columns)}", e)
+            send_report(f"ERROR: Couldn't format data from url {item['url']}\nColumns: {list(raw.columns)}", e)
 
         data.append(df)
 

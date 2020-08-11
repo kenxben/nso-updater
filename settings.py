@@ -9,16 +9,29 @@ EMAIL_CREDS = "keys/email_creds.yaml"
 TARGET_ID = "1fM4UC4Y9uxkzJxIKFnW0h_YVAlB5qQ2cQdl4VuxmnnA"
 
 URLS = [
-    "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7458&force=1",
-    "http://permisosfuncionamiento.controlsanitario.gob.ec/consulta/reporte2excel_new.php",
+    {
+        "label": "Cosmeticos",
+        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7458&force=1",
+    },
+    {
+        "label": "Medicamentos",
+        "url": "http://permisosfuncionamiento.controlsanitario.gob.ec/consulta/reporte2excel_new.php",
+    },
 
     # This link redirects to not found:
-    # "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=1636&force=1",
+    # {
+    # "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=1636&force=1"
+    # },
     # Since it is a fixed file we use instead a mirror:
 
-    "https://drive.google.com/uc?export=download&id=1yFfLJabAQyEbHanLIWMKweH22dwq_T65",
-    "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7457&force=1"
-
+    {
+        "label": "Productos higienicos",
+        "url": "https://drive.google.com/uc?export=download&id=1yFfLJabAQyEbHanLIWMKweH22dwq_T65",
+    },
+    {
+        "label": "Productos higienicos",
+        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7457&force=1",
+    },
 ]
 
 # Rules to rename variables to be the same
@@ -46,4 +59,5 @@ COLS_SORTED = [
     "Titular del producto",
     "Fecha de emisión del certificado",
     "Fecha de vigencia de  NSO",
+    "Tipo de producto",
 ]
