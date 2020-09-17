@@ -9,6 +9,8 @@ import sys
 import os
 import json
 
+import requests
+
 
 def send_report(message, error=None):
     print(message, "ERROR:", error)
@@ -29,23 +31,53 @@ def send_report(message, error=None):
     sys.exit()
 
 
+def fix_drive_url(s):
+    if s.startswith("https://drive.google.com/uc?export=download&id="):
+        return s
+    else:
+        if s.startswith("https://drive.google.com"):
+            url2 = s.replace("/view?usp=sharing", "").replace("?e=download", "")
+            gid = url2.split("/")[-1]
+            print(gid)
+            url2 = f"https://drive.google.com/uc?export=download&id={gid}"
+            return url2
+    return s
+
+
 def get_rawdata(url):
 
     print("Reading url: ", url)
-    # ua = UserAgent()
-    http = urllib3.PoolManager(headers={'user-agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0'})
-    r = http.request('GET', url, preload_content=False)
+    headers = {
+        'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17',
+        'Connection': 'close'
+    }
+    # http = urllib3.PoolManager(headers=headers)
+    # r = http.request('GET', url, preload_content=False, retries=10)
+    r = requests.get(url, headers=headers)
+    print(f"Status code: {r.status_code}\nHistory: {r.history}\nURL: {r.url}")
 
     try:
-        df = pd.read_excel(r.data)
-        print("Success!")
+        # case 1: we know it is an excel file
+        if (r.url[-4:] == 'xlsx') or (r.url[-4:] == '.xls'):
+            df = pd.read_excel(r.content)
+
+        # case 2: it might be an excel file in a google drive link
+        else:
+            url2 = fix_drive_url(r.url) # not google it returns the same string
+            print(f"fixed url: {url2}\n")
+            r2 = requests.get(url2, headers=headers)
+            df = pd.read_excel(r2.content)
+            print("Success!\n")
+
+
+    # case 3: else, it might be an html uploaded as an excel file:
     except XLRDError as e:
         print("Couldn't load data with pd.read_excel.", e, "\nTrying with pd.read_html")
-        print("first bytes in data: ", r.data[:300])
-        df = pd.read_html(r.data, header=[0])[0]
+        print("first bytes in data: ", r.content[:300], "\n")
+        df = pd.read_html(r.content, header=[0])[0]
         print("Success!")
 
-    r.release_conn()
+    # r.release_conn()
     return df
 
 
@@ -93,7 +125,7 @@ def main():
         try:
             raw = get_rawdata(item['url'])
         except Exception as e:
-            send_report(f"ERROR: Couldn't read excel file at url {item['url']}", e)
+            send_report(f"ERROR: Couldn't read excel file at url {item['url']}\n", e)
 
         # Add columns with type label
         add_constant_col(raw, "Tipo de producto", item['label'])

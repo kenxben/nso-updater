@@ -11,7 +11,8 @@ TARGET_ID = "1fM4UC4Y9uxkzJxIKFnW0h_YVAlB5qQ2cQdl4VuxmnnA"
 URLS = [
     {
         "label": "Cosmeticos",
-        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7458&force=1",
+        # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7458&force=1",
+        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7770&force=1",  # cambio de url 2020-09-17
     },
     {
         "label": "Medicamentos",
@@ -23,14 +24,14 @@ URLS = [
     # "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=1636&force=1"
     # },
     # Since it is a fixed file we use instead a mirror:
+    {
+        "label": "Productos higienicos",  # por inh
+        "url": "https://drive.google.com/uc?export=download&id=1yFfLJabAQyEbHanLIWMKweH22dwq_T65",
+    },
 
     {
         "label": "Productos higienicos",
-        "url": "https://drive.google.com/uc?export=download&id=1yFfLJabAQyEbHanLIWMKweH22dwq_T65",
-    },
-    {
-        "label": "Productos higienicos",
-        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7457&force=1",
+        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7769&force=1",
     },
 ]
 
