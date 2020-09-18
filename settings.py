@@ -15,6 +15,10 @@ URLS = [
         "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7770&force=1",  # cambio de url 2020-09-17
     },
     {
+        "label": "Cosmeticos",  # old inh (mirror)
+        "url": "https://drive.google.com/uc?export=download&id=1gCD2U4yIt-j-bTklq5sJPSnCxwIUCc5k",
+    },
+    {
         "label": "Medicamentos",
         "url": "http://permisosfuncionamiento.controlsanitario.gob.ec/consulta/reporte2excel_new.php",
     },
@@ -25,8 +29,9 @@ URLS = [
     # },
     # Since it is a fixed file we use instead a mirror:
     {
-        "label": "Productos higienicos",  # por inh
-        "url": "https://drive.google.com/uc?export=download&id=1yFfLJabAQyEbHanLIWMKweH22dwq_T65",
+        "label": "Productos higienicos",  # old inh (mirror)
+        # "url": "https://drive.google.com/uc?export=download&id=1yFfLJabAQyEbHanLIWMKweH22dwq_T65",
+        "url": "https://drive.google.com/uc?export=download&id=1Lrycp2q4WeCSWtgSKjY84OIn0HoZyhTX",
     },
 
     {
