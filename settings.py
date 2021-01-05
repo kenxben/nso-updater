@@ -14,10 +14,10 @@ URLS = [
         # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7458&force=1",
 
         # cambio de url 2020-09-17
-        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7770&force=1",
+        # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7770&force=1",
 
         # cambio de url 2020-11-12
-        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7929&force=1",
+        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=8119&force=1",
     },
     {
         "label": "Cosmeticos",  # old inh (mirror)
