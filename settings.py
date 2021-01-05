@@ -17,6 +17,9 @@ URLS = [
         # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7770&force=1",
 
         # cambio de url 2020-11-12
+        # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7929&force=1",
+
+        # cambio de url 2021-01-04
         "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=8119&force=1",
     },
     {
