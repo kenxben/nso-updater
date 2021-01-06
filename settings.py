@@ -44,13 +44,19 @@ URLS = [
 
     {
         "label": "Productos higienicos",
-        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7769&force=1",
+        # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7769&force=1",
+
+        # Cambio 5 ene 2021, redirecciona a gdrive
+        # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=8118&force=1"
+        "url": "https://drive.google.com/uc?export=download&id=1BlL6tLn2wMRmeHKrSy3z-TuHM55_YYRp"
     },
 ]
 
 # Rules to rename variables to be the same
 COL_RENAMER = {
     "No. de Registro Sanitario": "Codigo de identificacion de NSO",
+    "Codigo de identificación de NSO": "Codigo de identificacion de NSO",
+    "Codigo de identificacion de NSO": "Codigo de identificacion de NSO",
     "Fecha de Emisión": "Fecha de emisión del certificado",
     "Fecha de Vigencia": "Fecha de vigencia de  NSO",
     "Titular del Producto": "Titular del producto",
@@ -63,6 +69,7 @@ COL_RENAMER = {
     "EMISION": "Fecha de emisión del certificado",
     "CADUCIDAD": "Fecha de vigencia de  NSO",
     "Fecha de vigencia de código de identificacion de NSO": "Fecha de vigencia de  NSO",
+    "Fecha de vigencia de código de identificación de NSO": "Fecha de vigencia de  NSO",
 }
 
 # Columns must be sorted in this order to be read by api engine
