@@ -20,7 +20,14 @@ URLS = [
         # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=7929&force=1",
 
         # cambio de url 2021-01-04
-        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=8119&force=1",
+        # "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=8119&force=1",
+
+        # cambio de url 2021-06-22
+        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=8729&force=1",
+    },
+    {
+        "label": "Cosmeticos",  # new D833 system
+        "url": "https://www.controlsanitario.gob.ec/wp-content/plugins/download-monitor/download.php?id=8728&force=1"
     },
     {
         "label": "Cosmeticos",  # old inh (mirror)
@@ -57,6 +64,7 @@ COL_RENAMER = {
     "No. de Registro Sanitario": "Codigo de identificacion de NSO",
     "Codigo de identificación de NSO": "Codigo de identificacion de NSO",
     "Codigo de identificacion de NSO": "Codigo de identificacion de NSO",
+    "Código de identificación de NSO": "Codigo de identificacion de NSO",
     "Fecha de Emisión": "Fecha de emisión del certificado",
     "Fecha de Vigencia": "Fecha de vigencia de  NSO",
     "Titular del Producto": "Titular del producto",
